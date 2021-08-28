@@ -1,0 +1,34 @@
+env: standard # スタンダード環境（省略可）
+
+runtime: nodejs14 # Node.js 14を使う
+
+instance_class: F4_1G
+
+service: default # GAEのサービスの名前。frontendとかでも良いかも
+
+# CORSを設定しないといけないかも images.microcms-assets.io
+handlers:
+  - url: /_next/static
+    static_dir: .next/static
+  - url: /(.*\.(gif|png|jpg|ico|txt|svg))$
+    static_files: public/\1
+    upload: public/.*\.(gif|png|jpg|ico|txt|svg)$
+  - url: /.*
+    script: auto
+    secure: always
+    redirect_http_response_code: 301
+
+default_expiration: "12h" # 静的ファイルのキャッシュ期間
+
+env_variables:
+  NODE_ENV: "production"
+  MICROCMS_API_KEY: "0ad5fa10-3a3c-41d5-bb0b-3fbdd5d4c088"
+  NEXT_PUBLIC_GA: "G-279960553"
+  NEXT_PUBLIC_GTM: "GTM-MZXCK4Z"
+
+inbound_services:
+  - warmup
+
+automatic_scaling:
+  min_instances: 0 # 動かしてないときはインスタンスを0にする
+  max_instances: 100

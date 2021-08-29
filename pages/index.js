@@ -19,8 +19,7 @@ import {
 } from "../lib";
 import { getAllPageIds, getBoysPageIds, getGirlsPageIds } from "../lib/page";
 
-import { BodoniFont } from "../src/theme";
-import { SmallFont } from "../src/theme";
+import { BodoniFont, SmallFont } from "../src/theme";
 
 export async function getStaticProps() {
   const topPicture = await getTopPagePicture();

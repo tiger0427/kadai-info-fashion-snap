@@ -26,21 +26,21 @@ export default function ThumbnailImageList(props) {
               key={props.pageIds[index].params.id}
             >
               <Link href={`/${props.type}/${props.pageIds[index].params.id}`}>
-                <Badge
+                {/* <Badge
                   badgeContent={"New!"}
                   color="secondary"
                   anchorOrigin={{
                     vertical: "top",
                     horizontal: "left",
                   }}
-                >
+                > */}
                   <Image
                     src={thumbnail.url}
                     width={thumbnail.width / 4}
                     height={thumbnail.height / 4}
                     loading={"eager"}
                   ></Image>
-                </Badge>
+                {/* </Badge> */}
               </Link>
             </Grid>
           );

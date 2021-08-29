@@ -1,21 +1,26 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { ThemeProvider, Typography, Box, Grid } from '@material-ui/core';
-import { BodoniFont, SmallFont } from './theme';
-import Link from 'next/link';
+import { makeStyles } from "@material-ui/core/styles";
+import { ThemeProvider, Typography, Box, Grid } from "@material-ui/core";
+import { BodoniFont, SmallFont } from "./theme";
+import Link from "next/link";
 
-const useStyles = makeStyles(theme => ({
-}))
+const useStyles = makeStyles((theme) => ({}));
 
-const bottomBarColor = '#707070'
-const bottomBarTextColor = 'white'
+const bottomBarColor = "#707070";
+const bottomBarTextColor = "white";
 
 export default function BottomBar() {
-  const classes = useStyles()
+  const classes = useStyles();
   return (
     <>
       <Grid container>
         <Grid item xs={12} sm={12} md={12}>
-          <Box pl={2} pt={2} pr={2} color={bottomBarTextColor} bgcolor={bottomBarColor}>
+          <Box
+            pl={2}
+            pt={2}
+            pr={2}
+            color={bottomBarTextColor}
+            bgcolor={bottomBarColor}
+          >
             <Box pb={1}>
               <ThemeProvider theme={BodoniFont}>
                 <Typography>CODE by KADAI INFO</Typography>
@@ -33,7 +38,12 @@ export default function BottomBar() {
               </Link>
             </Box>
           </Box>
-          <Box color={bottomBarTextColor} bgcolor={bottomBarColor} pb={1} pr={1}>
+          <Box
+            color={bottomBarTextColor}
+            bgcolor={bottomBarColor}
+            pb={1}
+            pr={1}
+          >
             <ThemeProvider theme={SmallFont}>
               <Typography align="right">
                 @KADAI INFO All Rights Reserved
@@ -43,5 +53,5 @@ export default function BottomBar() {
         </Grid>
       </Grid>
     </>
-  )
+  );
 }

@@ -1,44 +1,42 @@
-import { createTheme } from '@material-ui/core/styles';
-import { red } from '@material-ui/core/colors';
+import { createTheme } from "@material-ui/core/styles";
+import { red } from "@material-ui/core/colors";
 
 // Create a theme instance.
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: "#556cd6",
     },
     secondary: {
-      main: '#19857b',
+      main: "#19857b",
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#fff',
+      default: "#fff",
     },
     text: {
-      primary: '#707070'
-    }
+      primary: "#707070",
+    },
   },
   typography: {
     button: {
-      textTransform: 'none'
-    }
-  }
+      textTransform: "none",
+    },
+  },
 });
 
 export const BodoniFont = createTheme({
   typography: {
-    fontFamily: [
-      'Bodoni Moda',
-    ].join(','),
+    fontFamily: ["Bodoni Moda"].join(","),
   },
 });
 
 export const SmallFont = createTheme({
   typography: {
-    fontSize: 10
-  }
-})
+    fontSize: 10,
+  },
+});
 
 export default theme;

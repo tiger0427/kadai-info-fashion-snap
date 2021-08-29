@@ -1,14 +1,24 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-export function Header({pageTitle, pageDescription, pageImg, pageImgWidth, pageImgHeight}) {
-  const defaultTitle = 'CODE by KADAI INFO'
-  const defaultDescription = 'KADAI INFOが運営している、鹿大生による鹿大生のためのファッション紹介コンテンツ。週に2コーデずつ公開しています。'
+export function Header({
+  pageTitle,
+  pageDescription,
+  pageImg,
+  pageImgWidth,
+  pageImgHeight,
+}) {
+  const defaultTitle = "CODE by KADAI INFO";
+  const defaultDescription =
+    "KADAI INFOが運営している、鹿大生による鹿大生のためのファッション紹介コンテンツ。週に2コーデずつ公開しています。";
 
-  const title = (typeof pageTitle === 'string') ? `${pageTitle} | ${defaultTitle}` : defaultTitle
-  const description = pageDescription ? pageDescription : defaultDescription
-  const imgUrl = pageImg
-  const imgWidth = pageImgWidth ? pageImgWidth : 1280
-  const imgHeight = pageImgHeight ? pageImgHeight : 640
+  const title =
+    typeof pageTitle === "string"
+      ? `${pageTitle} | ${defaultTitle}`
+      : defaultTitle;
+  const description = pageDescription ? pageDescription : defaultDescription;
+  const imgUrl = pageImg;
+  const imgWidth = pageImgWidth ? pageImgWidth : 1280;
+  const imgHeight = pageImgHeight ? pageImgHeight : 640;
   return (
     <Head>
       <title>{title}</title>
@@ -19,10 +29,14 @@ export function Header({pageTitle, pageDescription, pageImg, pageImgWidth, pageI
       <meta property="og:image" content={imgUrl} />
       <meta property="og:image:width" content={String(imgWidth)} />
       <meta property="og:image:height" content={String(imgHeight)} />
-      <meta name="twitter:card" key="twitterCard" content="summary_large_image" />
+      <meta
+        name="twitter:card"
+        key="twitterCard"
+        content="summary_large_image"
+      />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" key="twitterImage" content={imgUrl} />
     </Head>
-  )
+  );
 }

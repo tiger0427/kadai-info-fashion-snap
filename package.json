@@ -16,6 +16,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "format": "prettier --write **/*.{js,json,md}"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.2"
   }
 }

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import { Box, Typography } from '@material-ui/core';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import { Box, Typography } from "@material-ui/core";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -15,11 +15,7 @@ function TabPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={1}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={1}>{children}</Box>}
     </div>
   );
 }
@@ -33,12 +29,11 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
-const useStyles = makeStyles((theme) => ({
-}));
+const useStyles = makeStyles((theme) => ({}));
 
 export default function TypeTabs(props) {
   const classes = useStyles();
@@ -57,16 +52,20 @@ export default function TypeTabs(props) {
         // textColor="secondary"
         centered
       >
-        {props.labels.map((label, index) => <Tab label={label} {...a11yProps(index)} key={`Tab-${index}`}></Tab>)}
+        {props.labels.map((label, index) => (
+          <Tab label={label} {...a11yProps(index)} key={`Tab-${index}`}></Tab>
+        ))}
       </Tabs>
       <Box mt={4} mb={1}>
         <Typography align="center" variant="body2">
           -Styling-
         </Typography>
       </Box>
-      {props.children.map((child, index) =>
-        <TabPanel value={value} index={index} key={`TabPanel-${index}`}>{child}</TabPanel>)
-      }
+      {props.children.map((child, index) => (
+        <TabPanel value={value} index={index} key={`TabPanel-${index}`}>
+          {child}
+        </TabPanel>
+      ))}
     </>
   );
 }

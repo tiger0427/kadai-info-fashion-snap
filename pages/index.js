@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { ThemeProvider } from "@material-ui/styles";
 
+import { MicroCmsClient } from "../lib/client";
+
 import TopBar from "../src/TopBar";
 import TypeTabs from "../src/TypeTabs";
 import ThumbnailImageList from "../src/ThumbnailImageList";
@@ -16,16 +18,18 @@ import {
   getAllPageThumbnails,
   getGirlsPageThumbnails,
   getBoysPageThumbnails,
+  getPublishDates,
 } from "../lib";
 import { getAllPageIds, getBoysPageIds, getGirlsPageIds } from "../lib/page";
 
 import { BodoniFont, SmallFont } from "../src/theme";
 
 export async function getStaticProps() {
-  const topPicture = await getTopPagePicture();
-  const allThumbnails = await getAllPageThumbnails();
-  const girlsThumbnails = await getGirlsPageThumbnails();
-  const boysThumbnails = await getBoysPageThumbnails();
+  const topPicture = await getTopPagePicture(MicroCmsClient);
+  const allThumbnails = await getAllPageThumbnails(MicroCmsClient);
+  const girlsThumbnails = await getGirlsPageThumbnails(MicroCmsClient);
+  const boysThumbnails = await getBoysPageThumbnails(MicroCmsClient);
+  const publishDates = await getPublishDates(MicroCmsClient);
 
   const allPageIds = await getAllPageIds();
   const girlsPageIds = await getGirlsPageIds();
@@ -40,6 +44,7 @@ export async function getStaticProps() {
       allPageIds: allPageIds,
       girlsPageIds: girlsPageIds,
       boysPageIds: boysPageIds,
+      publishDates: publishDates,
     },
   };
 }
@@ -52,6 +57,7 @@ export default function Index({
   allPageIds,
   girlsPageIds,
   boysPageIds,
+  publishDates,
 }) {
   return (
     <>
@@ -91,18 +97,21 @@ export default function Index({
               thumbnails={allThumbnails}
               pageIds={allPageIds}
               type={"all"}
+              publishDates={publishDates}
               key={"ThumbnailImageList-1"}
             ></ThumbnailImageList>
             <ThumbnailImageList
               thumbnails={girlsThumbnails}
               pageIds={girlsPageIds}
               type={"girls"}
+              publishDates={publishDates}
               key={"ThumbnailImageList-2"}
             ></ThumbnailImageList>
             <ThumbnailImageList
               thumbnails={boysThumbnails}
               pageIds={boysPageIds}
               type={"boys"}
+              publishDates={publishDates}
               key={"ThumbnailImageList-3"}
             ></ThumbnailImageList>
           </TypeTabs>

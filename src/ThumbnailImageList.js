@@ -17,11 +17,16 @@ export default function ThumbnailImageList({
     <>
       <Grid container spacing={3}>
         {thumbnails.map((thumbnail, index) => {
+          const pageId = pageIds[index].params.id;
+          let FLAG = false;
+          publishDates.map((publishDate) => {
+            if(publishDate.id === pageId && publishDate.newFlag === true) FLAG = true;
+          });
           return (
-            <Grid item xs={6} sm={6} md={4} key={pageIds[index].params.id}>
-              <Link href={`/${type}/${pageIds[index].params.id}`}>
+            <Grid item xs={6} sm={6} md={4} key={pageId}>
+              <Link href={`/${type}/${pageId}`}>
                 <Badge
-                  badgeContent={publishDates[index].newFlag && <NewBadge />}
+                  badgeContent={FLAG && <NewBadge />}
                   anchorOrigin={{
                     vertical: "top",
                     horizontal: "left",
